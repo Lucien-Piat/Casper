@@ -165,6 +165,7 @@ def move(dictionnaire):
             print("vous ne pouvez plus monter, Choisissez une autre option") 
             #menu_deplacement()
             #choix==int(input("\nChoisissez un nombre : "))
+               #pas fini car ca parter dans tout les sens 
 
 
 
