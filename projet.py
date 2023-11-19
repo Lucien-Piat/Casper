@@ -13,6 +13,7 @@ def affichage_menu():
     print("0 : Quitter")
 
 def menu_deplacement() :
+           """menue une fois qu'on a commencer un partie """
     print(" -------------------------------------------")
     print("|          Ou voulez vous allez             |")
     print("|                                           |")
@@ -79,6 +80,7 @@ for i in tableau.keys():
 
 
 def menu_deplacement() :
+           """menue une fois qu'on a commencer un partie """
     print(" -------------------------------------------")
     print("|          Ou voulez vous allez             |")
     print("|                                           |")
@@ -111,17 +113,20 @@ def reception_deplacement(dictionnaire,nb):
     return dictionnaire
 
 
-def monter_decendre(dictionnaire, nb): 
-    gauche = dictionnaire['gauche']
-    droite = dictionnaire ['droite']
+def monter_decendre(dictionnaire, nb,compteur): 
+           """ changer la valeur quand du fantomes grace a ces coordonner de base,
+           une fois qu'on a chois le nb de fois qu'on monte ou descend, 
+           on choisi droite gauche (nb), 
+           et change la coordonnée a partir de la coodornner de base du fantomme,
+           je pense il manque quelque chose sur y, grace au compteur """
     fantome = dictionnaire['fantome']
-    if nb == 1 : 
+    if nb == 1 : #gauche
         x = fantome[0]
         y = fantome[1]
         res=[x-1,y]
         fantome=[]
         fantome.append(res)
-    elif nb == 2 :
+    elif nb == 2 : #droite
         x = fantome[0]
         y = fantome[1]
         res=[x+1,y]
@@ -131,13 +136,14 @@ def monter_decendre(dictionnaire, nb):
     dictionnaire['fantome']=fantome
     
 def extremite(dictionnaire):
+           """Teste si on est a une extremité gauche ou droite,
+           on utiliseras le return pour dire si c'est possible ou pas d'aller dans cette case"""
     fantome = dictionnaire['fantome']
     if fantome[0][0]==0 : #si x = 0, extremité gauche (ne peut plus aller a gauche)
-        print("tu ne peut plus aller a gauche")
-        return None
+        return 'Gauche'
     elif fantome[0][0]==4 :#si x = 4, extremité droite (ne peut plus aller a droite)
         print("tu ne peut plus aller a droite ")
-        return None
+        return 'Droite'
     else : 
         return True 
 
@@ -162,12 +168,17 @@ def move(dictionnaire):
         compteur = fantome[0][1] - 1
         print(compteur)
         if compteur <= 1 : #permet de tester si on est pres ou pas du bord!! (quand on est pres du bord ca fonctionne )
-            print("vous ne pouvez plus monter, Choisissez une autre option") 
-            #menu_deplacement()
-            #choix==int(input("\nChoisissez un nombre : "))
-               #pas fini car ca parter dans tout les sens 
-
-
+           print("vous ne pouvez plus monter, Choisissez une autre option") 
+           res = extremite(dictionnaire)
+           if res == 'Gauche' : 
+                      print("tu ne peut plus aller a gauche, Choisissez une autre option")
+           elif res == 'Droite' : 
+                      print("tu ne peut plus aller a droite, Choisissez une autre option")
+                   
+           menu_deplacement()
+           choix==int(input("\nChoisissez un nombre : "))
+           monter_decendre(dictionnaire, choix ,compteur)
+               #pas fini car ca parter dans tout les sens JE VEUX MOURIR 
 
         """il manque plein de chose JE VAIS MOURIRE 
         une fois qu'on choisi droite ou gauche, suffit de changer fantome[0],
