@@ -210,7 +210,6 @@ def bruit(fantome, savant, maitre, bc):
 
 
 #MAIN 
-
 pinte = 2
 savant = 8
 maitre = 10
@@ -219,9 +218,7 @@ bonus_pinte= [1,6,6,9,12]
 casper_position = 0
 
 
-#Debut de partie
-
-
+#PARTIE
 while True :
     
     menu(affichage_menu())
