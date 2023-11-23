@@ -1,10 +1,4 @@
-tableau = { 'pinte' : [[0,1], [0,3], [1,2], [1,2], [4,1]], 
-           'bib_c' : [ [0,2], [2,2], [2,3]], 
-            'maitre' : [[2,1]],
-            'savant' : [[4,2]],
-            'fantome' : [[1,4]],
-            'No' : [[0,0], [1,0], [2,0],[4,0], [3,1],[3,2],[3,3],[4,3],[0,4],[2,4],[4,4]]}
-print(tableau)
+import sys
 
 def affichage_menu():
     print(" \nBienvenue sur Fantome Escape ")
@@ -12,182 +6,206 @@ def affichage_menu():
     print("2 : Régle du jeu") 
     print("0 : Quitter")
 
-def menu_deplacement() :
-           """menue une fois qu'on a commencer un partie """
-    print(" -------------------------------------------")
-    print("|          Ou voulez vous allez             |")
-    print("|                                           |")
-    print("|    1   :    Gauche                        |") 
-    print("|    2   :    Droite                        |")
-    print("|    3   :    Monter                        |")
-    print("|    4   :    Descendre                     |")
-    print("|                                           |")
-    print("|    0  :    Quitter                        |")
-    print(" -------------------------------------------")
-   
-
 def menu():
-    import sys
     choix=int(input("\nChoisissez un nombre : "))
     print()
     if choix==0 : #sortir du jeu
         sys.exit()
     elif choix==1 : #lancer le jeu
-        menu_deplacement()
+       print('ok')
     elif choix==2 : #Regle du jeu 
-        print("Bienvenue dans Fantome escape")
-        print("\nDans ce jeu nous avons Casper, un gentil fantome prisonnier dans un labyrinthe avec des etres \nmalefiques qui veulent le garder prisonnier dans le chateausper")
-        print("Votre but, liberer Casper pour qu'il puisse retourner dans le monde des fantomes où il fait toujours \nbeau et où tous ses amis l’attendent")
-        print("Le probleme Casper a du mal a s'orienter, il se perd dans le labyrinthe et ne trouve plus la sortie")
-        print("De plus un grand nombre de dangers le guettent et il doit etre tres prudent.")
-        
-        print("\nDans les pieces de ce labyrinthe on peut y trouver des ennemis :")
-        print("     - le maitre du chateau, qui renvoient Casper au debut, ")
-        print("     - des Bibbendum Chamallow , qui peuvent affaiblir Casper")
-        print("Mais on peut y trouver aussi des allier :")
-        print("     - le savant fou, en echange d'energie vous emmener n'importe ou**")
-        print("         **sauf sur la case paradie")
-        print("Enfin on peut aussi y trouver de l’energie qui lui permet d'avancer et faire face au ennemis")
-        
-        print("\nCasper se deplace d’une case a la fois et il ne peut rejoindre qu’une case accessible \ndirectement depuis sa position,il ne peut traverser une piece pour en rejoindre une autre, \nil doit s’arreter dans la case.")
-        print("Deplus il peut aller d'une case un autre seulement si un couloir relie ses 2 cases.")
-        
-        print("\nCasper possede au depart 3 pintes d’energie et est positionne dans la case reception, \n5 pintes sont cacher dans le jeu")
-        
-        print("\nVous gagner si Casper reussi a atteindre le paradis")
-        print("Vous perder lorsqu’il n’a plus d’energie")
+        print(" ------------------------------------------------------------------------------------------------------")
+        print("|                                 BIENVENUE DANS FANTOME ESCAPE                                       |")
+        print("|                                                                                                     |")
+        print("|                                                                                                     |")
+        print("|       Dans ce jeu nous avons Casper, un gentil fantome prisonnier dans un labyrinthe avec des       |")
+        print("|       etres malefiques qui veulent le garder prisonnier dans le chateausper.                        |")
+        print("|       Votre but, liberer Casper pour qu'il puisse retourner dans le monde des fantomes où il        |")
+        print("|       fait toujours beau et où tous ses amis l’attendent.                                           |")
+        print("|                                                                                                     |")
+        print("|        Le probleme Casper a du mal a s'orienter, il se perd dans le labyrinthe et ne trouve         |")
+        print("|        plus la sortie                                                                               |")
+        print("|        De plus un grand nombre de dangers le guettent et il doit etre tres prudent.                 |")
+        print("|                                                                                                     |")
+        print("|                                                                                                     |")
+        print("|        Dans les pieces de ce labyrinthe on peut y trouver des ennemis :                             |")
+        print("|                                  - le maitre du chateau, qui renvoient Casper au debut,             |")
+        print("|                                  - des Bibbendum Chamallow , qui peuvent affaiblir Casper           |")
+        print("|        Mais on peut y trouver aussi des allier :                                                    |")
+        print("|                                  - le savant fou, en echange d'energie vous emmener n'importe ou**  |")
+        print("|                                                                        **sauf sur la case paradie   |")
+        print("|       Enfin on peut aussi y trouver de l’energie qui lui permet d'avancer et faire face au ennemis  |")
+        print("|                                                                                                     |")
+        print("|                                                                                                     |")
+        print("|       Casper se deplace d’une case a la fois et il ne peut rejoindre qu’une case accessible         |")
+        print("|       directement depuis sa position,il ne peut traverser une piece pour en rejoindre une autre,    |")
+        print("|       il doit s’arreter dans la case.                                                               |")
+        print("|       Deplus il peut aller d'une case un autre seulement si un couloir relie ses 2 cases.           |")
+        print("|                                                                                                     |")
+        print("|                                                                                                     |")
+        print("|       Casper possede au depart 3 pintes d’energie et est positionne dans la case reception,         |")
+        print("|       5 pintes sont cacher dans le jeu                                                              |")
+        print("|                                                                                                     |")
+        print("|                                                                                                     |")
+        print("|       Vous gagner si Casper reussi a atteindre le paradis                                           |")
+        print("|       Vous perder lorsqu’il n’a plus d’energie                                                      |")
+        print("|                                                                                                     |")
+        print("|                                                                                                     |")
+        print(" ------------------------------------------------------------------------------------------------------")
         print()
 
-affichage_menu()
-menu()
+def attribution(casper_position, debut, fin,n=0):
+    for i in range(debut,fin):
+        if casper_position == debut :
+            case_n0 = " A "
+        else : 
+            case_n0 = ' '+str(9-n*4)+' '
+        if casper_position == (debut+1) :
+            case_n1 = " A "
+        elif n==0 : 
+            case_n1 = " "+str(10-n*4)
+        else :
+            case_n1 = " "+str(10-n*4)+" " 
+        if casper_position == (debut+2) :
+            case_n2 = " A "
+        elif n==0 : 
+            case_n2 = " "+str(11-n*4)
+        else :
+            case_n2 = " "+str(11-n*4)+" "
+        if casper_position == (debut+3) :
+            case_n3 = " A "
+        elif n==0 : 
+            case_n3 = " "+str(12-n*4)
+        else :
+            case_n3 = " "+str(12-n*4)+" "
+    return case_n0, case_n1, case_n2, case_n3
 
-
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-tableau = { 'pinte' : [[0,1], [0,3], [1,2], [1,2], [4,1]], 
-            'bib_c' : [ [0,2], [2,2], [2,3]], 
-            'maitre' : [[2,1]],
-            'savant' : [[4,2]],
-            'fantome' : [[1,1]],
-            'no' : [[0,0], [1,0], [2,0],[4,0], [3,1],[3,2],[3,3],[4,3],[0,4],[2,4],[4,4]],
-            'gauche' : [[0,1],[1,1],[2,1],[0,2],[1,2],[2,2],[0,3],[1,3],[2,3]],
-            'droite' : [[2,1], [4,1], [2,2], [4,2], [2,3], [4,3]],
-            'reception' : [[1,4]], 
-            'paradis' : [[3,0]]}
-
-for i in tableau.keys():
-    print(i, ' : ', tableau[i])
-
-
-def menu_deplacement() :
-           """menue une fois qu'on a commencer un partie """
-    print(" -------------------------------------------")
-    print("|          Ou voulez vous allez             |")
-    print("|                                           |")
-    print("|    1   :    Gauche                        |") 
-    print("|    2   :    Droite                        |")
-    print("|    3   :    Monter                        |")
-    print("|    4   :    Descendre                     |")
-    print("|                                           |")
-    print("|    0  :    Quitter                        |")
-    print(" -------------------------------------------")
-
-def reception_deplacement(dictionnaire,nb):
-    """"Renvois ce qui ce passe quand on part de la case reception, 
-            gauche => case [0:3]
-            droite => case [2,3] 
-        Donc on vas sur la case et on change les coordonnee du fantome.
-    """
-    fantome = dictionnaire['fantome']
-    reception= dictionnaire['reception']
-    if fantome == reception : 
-        fantome=[]
-        if nb == 1 : #gauche 
-            fantome.append([0,3])
-            print("Vous vennais d'entre dans la case ",fantome, "\nVous avez quitter la recepetion")
-
-        elif nb == 2 : #droite
-            fantome.append([2,3])
-            print("Vous vennais d'entre dans la case ",fantome, "\nVous avez quitter la recepetion")
-        dictionnaire['fantome']=fantome
-    return dictionnaire
-
-
-def monter_decendre(dictionnaire, nb,compteur): 
-           """ changer la valeur quand du fantomes grace a ces coordonner de base,
-           une fois qu'on a chois le nb de fois qu'on monte ou descend, 
-           on choisi droite gauche (nb), 
-           et change la coordonnée a partir de la coodornner de base du fantomme,
-           je pense il manque quelque chose sur y, grace au compteur """
-    fantome = dictionnaire['fantome']
-    if nb == 1 : #gauche
-        x = fantome[0]
-        y = fantome[1]
-        res=[x-1,y]
-        fantome=[]
-        fantome.append(res)
-    elif nb == 2 : #droite
-        x = fantome[0]
-        y = fantome[1]
-        res=[x+1,y]
-        fantome=[]
-        fantome.append(res)
-
-    dictionnaire['fantome']=fantome
+def print_board(casper_position,pinte):
+    case_0 = " R "  
+    case_13 = " P " 
+    if casper_position==13:
+        case_13 = ' A '
+    if casper_position==0:
+        case_0 = ' A '  
+    print("_"*37+"\n"+" "*35)
+    print(" "*11+"_"*7+" "*6+"["+case_13+"]"+" "*6+"\n"+" "*10+"|"+" "*7+"|"+" "*7+"|"+" "*9)
+    for i in range(3):
+        case_n0 = case_n1 = case_n2 = case_n3 = " "
+        if i in [1,2]:
+            print(" "*10+"|"+" "*7+"|"+" "*7+"|"+" "*9)
+        if i == 0 :
+            res = attribution(casper_position,9,13,i)
+            case_n0, case_n1, case_n2, case_n3= res
+        if i == 1 :
+            res = attribution(casper_position,5,9,i)
+            case_n0, case_n1, case_n2, case_n3= res
+        if i == 2 :
+            res = attribution(casper_position,1,5,i)
+            case_n0, case_n1, case_n2, case_n3= res
+        print("    ["+case_n0+"]-+-["+case_n1+"]-+-["+case_n2+"]-+-["+case_n3+"]   ")     
+    print(" "*10+"|"+" "*7+"|"+" "*17)
+    print(" "*11+"-["+case_0+"]-"+" "*18+"\n"+" "*35+"\n"+" "*25+"P =",pinte," "*4+"\n"+"_"*37)
     
-def extremite(dictionnaire):
-           """Teste si on est a une extremité gauche ou droite,
-           on utiliseras le return pour dire si c'est possible ou pas d'aller dans cette case"""
-    fantome = dictionnaire['fantome']
-    if fantome[0][0]==0 : #si x = 0, extremité gauche (ne peut plus aller a gauche)
-        return 'Gauche'
-    elif fantome[0][0]==4 :#si x = 4, extremité droite (ne peut plus aller a droite)
-        print("tu ne peut plus aller a droite ")
-        return 'Droite'
-    else : 
-        return True 
+
+def ask_where_to_go():
+    return input('Ou aller ?\n> ')
+
+def is_ok_to_move(casper_position,wanted_position):
+    g1 = [0,1,2,3,5,6,7,8,9,10,11]
+    g2 = [3,4,7,8,11,12,13]
+    if int(wanted_position) in [11,7,3]:
+        return True
+    if casper_position in g1 :
+        if int(wanted_position) in g1 :
+            return True   
+    if casper_position in g2 :
+        if int(wanted_position) in g2 :
+            return True   
+    return False
+    
+def compteur_pinte(pinte, bonus, fantome): 
+    for i in bonus : 
+        if fantome == i : 
+            print("Bravo vous avez reçu un bonus")
+            pinte = pinte + 1
+    return pinte
+
+def perdu(pinte): 
+    if pinte < 1 : 
+        print(" ---------------------------------------------------")
+        print("|                      PERDU                        |")
+        print("|                                                   |")
+        print("|                  Vous avez perdu                  |")
+        print("|                                                   |")
+        print("|                                                   |")
+        print("|                1 : Nouvelle partie                |")
+        print("|                0 : Quitter                        |")
+        print(" ---------------------------------------------------")
+        menu()
 
 
-def move(dictionnaire): 
-    gauche = dictionnaire['gauche']
-    droite = dictionnaire ['droite']
-    fantome = dictionnaire['fantome']
-    print("gauche : ", gauche, "\ndroite : ", droite, "\nCasper : ", fantome)
-    menu_deplacement()
-    choix=int(input("\nChoisissez un nombre : "))
-    print()
+def victoire(fantome):
+    if fantome == 13 : 
+        print(" ---------------------------------------------------")
+        print("|                  FELICITATION                     |")
+        print("|                                                   |")
+        print("|     Vous avez reussit a atteindre le paradis      |")
+        print("|                                                   |")
+        print("|                      BRAVO                        |")
+        print(" ---------------------------------------------------")
 
-    if choix == 1 : #Gauche 
-        reception_deplacement(dictionnaire,choix) 
+def maitre_du_jeu(fantome,maitre):
+    if fantome==maitre : 
+        print(" ---------------------------------------------------")
+        print("|              RETOUR A LA CASE DEPART              |")
+        print("|                                                   |")
+        print("|          Vous avez rencontrez le maitre           |")
+        print("|                                                   |")
+        print("|     Vous etes donc retour a la case depart        |")
+        print(" ---------------------------------------------------")
+        print()
+    return fantome=0
 
-    if choix == 2 : #Droite
-        reception_deplacement(dictionnaire,choix) 
-
-    if choix == 3 : #Monter
-        #print(fantome[0][1])
-        compteur = fantome[0][1] - 1
-        print(compteur)
-        if compteur <= 1 : #permet de tester si on est pres ou pas du bord!! (quand on est pres du bord ca fonctionne )
-           print("vous ne pouvez plus monter, Choisissez une autre option") 
-           res = extremite(dictionnaire)
-           if res == 'Gauche' : 
-                      print("tu ne peut plus aller a gauche, Choisissez une autre option")
-           elif res == 'Droite' : 
-                      print("tu ne peut plus aller a droite, Choisissez une autre option")
-                   
-           menu_deplacement()
-           choix==int(input("\nChoisissez un nombre : "))
-           monter_decendre(dictionnaire, choix ,compteur)
-               #pas fini car ca parter dans tout les sens JE VEUX MOURIR 
-
-        """il manque plein de chose JE VAIS MOURIRE 
-        une fois qu'on choisi droite ou gauche, suffit de changer fantome[0],
-        plus check si possible d'aller dans cette direction"""
+def savant_du_jeu(fantome,savant):
+    if fantome==savant:
+        pinte = pinte-2
         
-    return dictionnaire
+    return ask_where_to_go()
 
 
-move(tableau)
-for i in tableau.keys():
-    print(i, ' : ', tableau[i])
+#MAIN 
 
+pinte = 2
+savent = 8
+maitre = 10
+bc = [3,5,7]
+bonus_pinte= [1,6,6,9,12]
+
+casper_position = 0
+print_board(casper_position,0)
+while True :
+    asked_position = int(ask_where_to_go())
+    
+    if is_ok_to_move(casper_position,asked_position):
+        casper_position = asked_position
+    print_board(casper_position,0)
+    
+    
+#TEST 
+
+# fantome =int(input("Donne un chiffre : "))
+# pinte = compteur_pinte(pinte, bonus_pinte,fantome)
+# print(print_board(fantome, pinte))
+# maitre_du_jeu(fantome,maitre)
+# victoire(fantome)
+# perdu(pinte)
+# #affichage_menu()
+# #menu()
+
+    
+    
+
+
+
+
+   
