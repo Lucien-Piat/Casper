@@ -128,7 +128,9 @@ def compteur_pinte(bonus, fantome):
     pinte = 0
     for i in bonus : 
         if fantome == i : 
+            print("-----------------------------")
             print("Bravo vous avez reçu un bonus")
+            print("-----------------------------")
             pinte = pinte + 1
     return pinte
 
@@ -176,11 +178,35 @@ def maitre_du_jeu(fantome,maitre):
         fantome=0
     return fantome
 
-def savant_du_jeu(fantome,savant):
-    if fantome==savant:
+def savant_bib(fantome,variable):
+    if fantome==variable:
         return True
     else :
         return False
+
+    
+
+def bruit(fantome, savant, maitre, bc):
+    savant = [savant-1, savant+1, savant-4,savant+4, savant-5, savant+5, savant-3, savant+3]
+    maitre = [maitre-1, maitre+1, maitre-4,maitre+4, maitre-5, maitre+5, maitre-3, maitre+3]
+    bc1 = [bc[0]-1, bc[0]+1, bc[0]-4,bc[0]+4, bc[0]-5, bc[0]+5, bc[0]-3, bc[0]+3]
+    bc2 = [bc[1]-1, bc[1]+1, bc[1]-4,bc[1]+4, bc[1]-5, bc[1]+5, bc[1]-3, bc[1]+3]
+    bc3 = [bc[2]-1, bc[2]+1, bc[2]-4,bc[2]+4, bc[2]-5, bc[2]+5, bc[2]-3, bc[2]+3]
+    #-1/+1 droite/gauche ; -4/+4 dessus/dessous ; -5/+5 diagonal droite; -3/+3 diagonal gauche
+
+    if fantome in bc1 or bc2 or bc3 : 
+        print(" ---------------------------------------------------")
+        print("        Vous sentez une odeur de marchmallo         ")
+        print(" ---------------------------------------------------")
+    if fantome in savant : 
+        print(" ---------------------------------------------------")
+        print("   Vous entendez le rire sardonique du savant fou   ")
+        print(" ---------------------------------------------------")
+    if fantome in maitre : 
+        print(" ---------------------------------------------------")
+        print("Vous entendez les clès du trousseau du maitre du jeu")
+        print(" ---------------------------------------------------")
+
 
 
 #MAIN 
@@ -212,17 +238,23 @@ while True :
             break
         casper_position = maitre_du_jeu(casper_position,maitre)
         
-        if savant_du_jeu(casper_position,savant) :
+        if savant_bib(casper_position,savant) :
             pinte += -1
             asked_position = int(ask_where_to_go())
             casper_position = asked_position
+
+        if savant_bib(casper_position,bc) :
+            pinte += -2
+        
+        bruit(casper_position, savant, maitre, bc)
             
         #SI DES PV SONT PERDUS AJOUTER ICI 
     
         pinte += compteur_pinte(bonus_pinte, casper_position)
             
-            
-
+#Une fois que t'as gagner ET que tu recommence une partie
+#le fantome ne se reinitialise pas.     
+        
 #TEST 
 
 # fantome =int(input("Donne un chiffre : "))
@@ -233,11 +265,3 @@ while True :
 # perdu(pinte)
 # #affichage_menu()
 # #menu()
-
-    
-    
-
-
-
-
-   
