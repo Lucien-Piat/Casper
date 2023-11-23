@@ -5,15 +5,14 @@ def affichage_menu():
     print("\n1 : Nouvelle partie") 
     print("2 : Régle du jeu") 
     print("0 : Quitter")
-
-def menu():
     choix=int(input("\nChoisissez un nombre : "))
+    return choix
+
+def menu(choix):
     print()
     if choix==0 : #sortir du jeu
         sys.exit()
-    elif choix==1 : #lancer le jeu
-       print('ok')
-    elif choix==2 : #Regle du jeu 
+    if choix==2 : #Regle du jeu 
         print(" ------------------------------------------------------------------------------------------------------")
         print("|                                 BIENVENUE DANS FANTOME ESCAPE                                       |")
         print("|                                                                                                     |")
@@ -53,26 +52,28 @@ def menu():
         print("|                                                                                                     |")
         print(" ------------------------------------------------------------------------------------------------------")
         print()
+        input('Appuyer sur une touche\n> ')
+    print('\nDebut de la partie: \n')
 
-def attribution(casper_position, debut, fin,n=0):
+def attribution(fantome, debut, fin,n=0):
     for i in range(debut,fin):
-        if casper_position == debut :
+        if fantome == debut :
             case_n0 = " A "
         else : 
             case_n0 = ' '+str(9-n*4)+' '
-        if casper_position == (debut+1) :
+        if fantome == (debut+1) :
             case_n1 = " A "
         elif n==0 : 
             case_n1 = " "+str(10-n*4)
         else :
             case_n1 = " "+str(10-n*4)+" " 
-        if casper_position == (debut+2) :
+        if fantome == (debut+2) :
             case_n2 = " A "
         elif n==0 : 
             case_n2 = " "+str(11-n*4)
         else :
             case_n2 = " "+str(11-n*4)+" "
-        if casper_position == (debut+3) :
+        if fantome == (debut+3) :
             case_n3 = " A "
         elif n==0 : 
             case_n3 = " "+str(12-n*4)
@@ -80,12 +81,12 @@ def attribution(casper_position, debut, fin,n=0):
             case_n3 = " "+str(12-n*4)+" "
     return case_n0, case_n1, case_n2, case_n3
 
-def print_board(casper_position,pinte):
+def print_board(fantome,pinte):
     case_0 = " R "  
     case_13 = " P " 
-    if casper_position==13:
+    if fantome==13:
         case_13 = ' A '
-    if casper_position==0:
+    if fantome==0:
         case_0 = ' A '  
     print("_"*37+"\n"+" "*35)
     print(" "*11+"_"*7+" "*6+"["+case_13+"]"+" "*6+"\n"+" "*10+"|"+" "*7+"|"+" "*7+"|"+" "*9)
@@ -94,13 +95,13 @@ def print_board(casper_position,pinte):
         if i in [1,2]:
             print(" "*10+"|"+" "*7+"|"+" "*7+"|"+" "*9)
         if i == 0 :
-            res = attribution(casper_position,9,13,i)
+            res = attribution(fantome,9,13,i)
             case_n0, case_n1, case_n2, case_n3= res
         if i == 1 :
-            res = attribution(casper_position,5,9,i)
+            res = attribution(fantome,5,9,i)
             case_n0, case_n1, case_n2, case_n3= res
         if i == 2 :
-            res = attribution(casper_position,1,5,i)
+            res = attribution(fantome,1,5,i)
             case_n0, case_n1, case_n2, case_n3= res
         print("    ["+case_n0+"]-+-["+case_n1+"]-+-["+case_n2+"]-+-["+case_n3+"]   ")     
     print(" "*10+"|"+" "*7+"|"+" "*17)
@@ -110,20 +111,21 @@ def print_board(casper_position,pinte):
 def ask_where_to_go():
     return input('Ou aller ?\n> ')
 
-def is_ok_to_move(casper_position,wanted_position):
+def is_ok_to_move(fantome,wanted_position):
     g1 = [0,1,2,3,5,6,7,8,9,10,11]
     g2 = [3,4,7,8,11,12,13]
     if int(wanted_position) in [11,7,3]:
         return True
-    if casper_position in g1 :
+    if fantome in g1 :
         if int(wanted_position) in g1 :
             return True   
-    if casper_position in g2 :
+    if fantome in g2 :
         if int(wanted_position) in g2 :
             return True   
     return False
     
-def compteur_pinte(pinte, bonus, fantome): 
+def compteur_pinte(bonus, fantome):
+    pinte = 0
     for i in bonus : 
         if fantome == i : 
             print("Bravo vous avez reçu un bonus")
@@ -141,6 +143,8 @@ def perdu(pinte):
         print("|                1 : Nouvelle partie                |")
         print("|                0 : Quitter                        |")
         print(" ---------------------------------------------------")
+        print()
+        input('Appuyer sur une touche\n> ')
         menu()
 
 
@@ -153,44 +157,72 @@ def victoire(fantome):
         print("|                                                   |")
         print("|                      BRAVO                        |")
         print(" ---------------------------------------------------")
+        print()
+        input('Appuyer sur une touche\n> ')
+        return True 
+      
 
 def maitre_du_jeu(fantome,maitre):
     if fantome==maitre : 
         print(" ---------------------------------------------------")
         print("|              RETOUR A LA CASE DEPART              |")
         print("|                                                   |")
-        print("|          Vous avez rencontrez le maitre           |")
+        print("|          Vous avez rencontré le maitre            |")
         print("|                                                   |")
         print("|     Vous etes donc retour a la case depart        |")
         print(" ---------------------------------------------------")
         print()
-    return fantome=0
+        input('Appuyer sur une touche\n> \n')
+        fantome=0
+    return fantome
 
 def savant_du_jeu(fantome,savant):
     if fantome==savant:
-        pinte = pinte-2
-        
-    return ask_where_to_go()
+        return True
+    else :
+        return False
 
 
 #MAIN 
 
 pinte = 2
-savent = 8
+savant = 8
 maitre = 10
 bc = [3,5,7]
 bonus_pinte= [1,6,6,9,12]
-
 casper_position = 0
-print_board(casper_position,0)
+
+
+#Debut de partie
+
+
 while True :
-    asked_position = int(ask_where_to_go())
     
-    if is_ok_to_move(casper_position,asked_position):
-        casper_position = asked_position
-    print_board(casper_position,0)
+    menu(affichage_menu())
+
+    while True :
+        print_board(casper_position,pinte)
+        
+        asked_position = int(ask_where_to_go())
+        
+        if is_ok_to_move(casper_position,asked_position):
+            casper_position = asked_position
+            
+        if victoire(casper_position):
+            break
+        casper_position = maitre_du_jeu(casper_position,maitre)
+        
+        if savant_du_jeu(casper_position,savant) :
+            pinte += -1
+            asked_position = int(ask_where_to_go())
+            casper_position = asked_position
+            
+        #SI DES PV SONT PERDUS AJOUTER ICI 
     
-    
+        pinte += compteur_pinte(bonus_pinte, casper_position)
+            
+            
+
 #TEST 
 
 # fantome =int(input("Donne un chiffre : "))
