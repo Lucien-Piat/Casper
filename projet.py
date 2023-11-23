@@ -178,11 +178,18 @@ def maitre_du_jeu(fantome,maitre):
         fantome=0
     return fantome
 
-def savant_bib(fantome,variable):
-    if fantome==variable:
+def savant_jeu(fantome,savant):
+    if fantome==savant:
         return True
     else :
         return False
+
+def bib_jeu(fantome, bc):
+    if fantome in bc:
+        return True
+    else :
+        return False
+
 
     
 
@@ -210,6 +217,7 @@ def bruit(fantome, savant, maitre, bc):
 
 
 #MAIN 
+
 pinte = 2
 savant = 8
 maitre = 10
@@ -235,12 +243,12 @@ while True :
             break
         casper_position = maitre_du_jeu(casper_position,maitre)
         
-        if savant_bib(casper_position,savant) :
+        if savant_jeu(casper_position,savant) :
             pinte += -1
             asked_position = int(ask_where_to_go())
             casper_position = asked_position
 
-        if savant_bib(casper_position,bc) :
+        if bib_jeu(casper_position,bc) :
             pinte += -2
         
         bruit(casper_position, savant, maitre, bc)
@@ -251,14 +259,3 @@ while True :
             
 #Une fois que t'as gagner ET que tu recommence une partie
 #le fantome ne se reinitialise pas.     
-        
-#TEST 
-
-# fantome =int(input("Donne un chiffre : "))
-# pinte = compteur_pinte(pinte, bonus_pinte,fantome)
-# print(print_board(fantome, pinte))
-# maitre_du_jeu(fantome,maitre)
-# victoire(fantome)
-# perdu(pinte)
-# #affichage_menu()
-# #menu()
