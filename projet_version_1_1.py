@@ -29,8 +29,8 @@ def menu(choix):
         print("|       Vous perdez lorsqu’il n’a plus d’énergie                                                       |\n|"+" "*102+"|\n"+"-"*104)                                                                                 
         input('\nAppuyer sur une touche\n> ')
         
-def create_a_print(titre, sub , body =""):
-    to_print = ("-"*53+"\n"+titre+"\n|"+" "*51+"|\n"+sub+"\n|"+" "*51+"|\n")
+def create_a_print(titre, sub , body = ""):
+    to_print = ("-"*53+"\n|"+" "*51+"|\n"+titre+"\n"+sub+"\n|"+" "*51+"|\n")
     if body != "" :
         to_print += (body+"\n|"+" "*51+"|\n")
     print(to_print+"-"*53)
@@ -38,23 +38,23 @@ def create_a_print(titre, sub , body =""):
 def attribution(fantome, debut, fin,n=0):
     for i in range(debut,fin):
         if fantome == debut :
-            case_n0 = colored(' A ', 'red', attrs=["blink","bold"])   
+            case_n0 = colored(' A ', 'magenta', attrs=["blink","bold"])   
         else : 
             case_n0 = ' '+str(9-n*4)+' '
         if fantome == (debut+1) :
-            case_n1 = colored(' A ', 'red', attrs=["blink","bold"])   
+            case_n1 = colored(' A ', 'magenta', attrs=["blink","bold"])   
         elif n==0 : 
             case_n1 = " "+str(10-n*4)
         else :
             case_n1 = " "+str(10-n*4)+" " 
         if fantome == (debut+2) :
-            case_n2 = colored(' A ', 'red', attrs=["blink","bold"])   
+            case_n2 = colored(' A ', 'magenta', attrs=["blink","bold"])   
         elif n==0 : 
             case_n2 = " "+str(11-n*4)
         else :
             case_n2 = " "+str(11-n*4)+" "
         if fantome == (debut+3) :
-            case_n3 = colored(' A ', 'red', attrs=["blink","bold"])   
+            case_n3 = colored(' A ', 'magenta', attrs=["blink","bold"])   
         elif n==0 : 
             case_n3 = " "+str(12-n*4)
         else :
@@ -62,10 +62,10 @@ def attribution(fantome, debut, fin,n=0):
     return case_n0, case_n1, case_n2, case_n3
 
 def print_board(fantome,pinte):
-    case_0 = " R "  
-    case_13 = colored(' P ', 'cyan')  
+    case_0 = colored(' R ', 'grey',  attrs=["bold"]) 
+    case_13 = colored(' P ', 'yellow',  attrs=["bold"])  
     if fantome==0:
-        case_0 = colored(' A ', 'red', attrs=["blink","bold"])   
+        case_0 = colored(' A ', 'magenta', attrs=["blink","bold"])   
     print("_"*37+"\n")
     print(" "*11+"_"*7+" "*6+"["+case_13+"] 13"+"\n"+" "*10+"|"+" "*7+"|"+" "*7+"|")
     for i in range(3):
@@ -101,7 +101,7 @@ def is_ok_to_move(fantome,wanted_position):
         
 def maitre_du_jeu(fantome,maitre):
     if fantome==maitre : 
-        create_a_print("|              RETOUR A LA CASE DEPART              |",
+        create_a_print("|            "+colored(' RETOUR A LA CASE DEPART ', 'red', attrs=["blink","bold"])+"              |",
                        "|          Vous avez rencontré le maitre            |")
         input('\nAppuyer sur une touche\n> ')
         fantome=0
@@ -109,7 +109,7 @@ def maitre_du_jeu(fantome,maitre):
 
 def savant_jeu(fantome,savant):
     if fantome==savant:
-        create_a_print("|               TELEPORTATION -1 PINTE              |",
+        create_a_print("|               TELEPORTATION "+colored('-1', 'red', attrs=["blink","bold"])+" PINTE              |",
                        "|        Vous avez rencontré le Savant-fou          |")
         input('\nAppuyer sur une touche\n> ')
         return random.choice(range(1,13)) , -1 
@@ -117,7 +117,7 @@ def savant_jeu(fantome,savant):
 
 def bib_jeu(fantome, bc):
     if fantome in bc:
-        create_a_print("|                OH NON ! -2 PINTES                 |",
+        create_a_print("|                OH NON ! "+colored('-2', 'red', attrs=["blink","bold"])+" PINTES                 |",
                        "|        Vous avez rencontré un Bibbendum           |")
         input('\nAppuyer sur une touche\n>')
         return -2
@@ -157,7 +157,7 @@ def bruit(fantome, savant, maitre, bc):
     
 def perdu(pinte): 
     if pinte < 1 : 
-        create_a_print("|                      PERDU                        |",
+        create_a_print("|                      "+colored('PERDU', 'red', attrs=["blink","bold"])+"                        |",
                        "|            Vous n'avez plus de pintes             |",
                        "|             Retour au menu principal              |")
         input('\nAppuyer sur une touche\n> ')
@@ -165,7 +165,7 @@ def perdu(pinte):
 
 def victoire(fantome):
     if fantome == 13 : 
-        create_a_print("|                  FELICITATION                     |",
+        create_a_print("|                  "+colored('FELICITATION', 'yellow', attrs=["blink","bold"])+"                     |",
                        "|     Vous avez reussit a atteindre le paradis      |",
                        "|                      BRAVO                        |")
         input('\nAppuyer sur une touche\n> ')
@@ -173,7 +173,7 @@ def victoire(fantome):
           
 def initialisation_des_positions(alea): #Si Y, positions aléatoires
     list_position = [8,10,3,5,7,1,6,6,9,12]
-    if alea.upper() == 'D':
+    if alea.upper() == '2':
         list_position = random.sample(range(1,13),10)
     return {"savant":list_position[0],"maitre":list_position[1],"bc":list_position[2:5],"pinte":list_position[5:]}
             
@@ -185,7 +185,7 @@ while True :
     
     menu(affichage_menu()) #Affichage du menu de choix
     
-    alea = input("Choix de la difficultée :\n\nFacile (F) Difficile (D)\n> ")
+    alea = input("Choix de la difficultée :\n\nLevel 1  (1) \nLevel 2 (2)\n> ")
     dico_positions=initialisation_des_positions(alea) #Generation (ou non) des positions
     
     #DEBUT DE LA PARTIE
