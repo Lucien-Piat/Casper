@@ -185,7 +185,7 @@ while True :
     
     menu(affichage_menu()) #Affichage du menu de choix
     
-    alea = input("Choix de la difficultée :\n\nLevel 1  (1) \nLevel 2 (2)\n> ")
+    alea = input("\nChoix de la difficulté :\n\nLevel 1 (1)\nLevel 2 (2)\n> ")
     dico_positions=initialisation_des_positions(alea) #Generation (ou non) des positions
     
     #DEBUT DE LA PARTIE
