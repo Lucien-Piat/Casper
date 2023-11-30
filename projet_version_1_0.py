@@ -238,15 +238,3 @@ while True :
         
         if perdu(pinte): #Check de la défaite 
             break
-        
-        #FIN DU TOUR
-
-
-#Demander a la prof si les pintes et les ennemis dispariassent aprés leurs utilisations
-
-#Refactorisé les fonctions Bib savant et Maitre
-#Ajout de défaite au prog principal
-#Creation d'un compteur de tours 
-#Ajout d'une boucle pour forcer le joueru a ce déplacer 
-#Ajout d'un bouton quitter
-#Ajout des couleurs 
