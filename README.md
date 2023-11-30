@@ -1,3 +1,0 @@
-# Casper
-Project Algoprog
-
