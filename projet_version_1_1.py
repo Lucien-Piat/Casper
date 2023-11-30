@@ -220,11 +220,4 @@ while True :
         
         if perdu(pinte): #Check de la défaite 
             break
-        
-        #FIN DU TOUR
-
-
-#Demander a la prof :
-    #Si il faut commenter le code
-
     
